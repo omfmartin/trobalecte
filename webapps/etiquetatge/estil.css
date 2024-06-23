@@ -1,12 +1,12 @@
 body {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
 }
 
 button {
-    background-color: #007bff;
+    background-color: #C1000A;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -15,28 +15,56 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #210102;
 }
 
-div {
-    margin-top: 10px;
+.mandarDialecteBoton {
+    text-align: left;
+}
+
+h1 {
+    font-stretch: extra-expanded;
+    text-align: center;
+    color: #C1000A;
+}
+
+h3 {
+    color: #C1000A;
+}
+
+.caissa {
+    margin: 5px 5px 5px 5px;
     background: white;
-    padding: 20px;
+    padding: 10px 30px 15px 25px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
 }
 
-#caissaFlex {
+#contenidor {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    width: 100%;
+}
+
+.fila {
+    display: flex;
+    width: 100%;
 }
 
 #formulariDialecte {
-    flex: 20%;
-    max-width: 20%;
+    flex: 0 0 29%;
 }
 
 #wiki {
-    flex: 80%;
-    max-width: 80%;
+    flex: 0 0 70%;
+}
+
+#parametres {
+    flex: 0 0 100%;
+}
+
+textarea {
+    resize: none;
+    white-space: nowrap;
+    overflow-x: scroll;
 }

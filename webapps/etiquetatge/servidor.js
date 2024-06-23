@@ -7,9 +7,15 @@ const cheerio = require('cheerio')
 const app = express();
 const port = 3000;
 
-// Global path configurations
-const DOSSIER_ARTICLES = './donadas/brut/wikipedia/A';
-const FICHIER_ETIQUETAS = './donadas/etiquetas/wikipedia_dialectes_manual.csv';
+// Config
+function cargarConfig() {
+    const data = fs.readFileSync(__dirname + '/config.json');
+    const config = JSON.parse(data);
+    return config
+}
+const config = cargarConfig();
+const DOSSIER_ARTICLES = config.input.dossier_articles;
+const FICHIER_ETIQUETAS = config.output.fichier_etiquetas;
 
 // Middlewares
 app.use(bodyParser.json());

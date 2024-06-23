@@ -10,6 +10,12 @@
       {"id": "exclure", "name": "Exclure"},
       {"id": "void", "name": "Void"},
       {"id": "desconegut", "name": "Desconegut"}
-    ]
+    ],
+    "input": {
+      "dossier_articles": "./donadas/brut/wikipedia/A",
+      "fichier_seleccion_articles": "./donadas/processat/seleccion_paginas_entropia.csv"
+    },
+    "output": {
+      "fichier_etiquetas": "./donadas/etiquetas/wikipedia_dialectes_manual.csv"
+    }
   }
-  

@@ -6,11 +6,12 @@ async function cargarPagina() {
     document.getElementById('contengutWiki').innerHTML = await responsa.text();
 
     const nomFichierWiki = await responsa["headers"].get("x-filename");
-    document.getElementById("nomFichierWiki").innerHTML = 'Titre: ' + nomFichierWiki;
+    document.getElementById("nomFichierWiki").innerHTML = '<a href="https://oc.wikipedia.org/wiki/"'
+        + nomFichierWiki + '>' + nomFichierWiki + '</a>';
     document.querySelector('input[name="nomFichierWiki"]').value = nomFichierWiki;
 
     // Apondre botons radiò
-    const response = await fetch('./etiquetas.json');
+    const response = await fetch('./config.json');
     const data = await response.json();
     const container = document.getElementById('dialectOptions');
     data.etiquetas.forEach(dialect => {

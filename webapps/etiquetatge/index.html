@@ -9,25 +9,50 @@
 </head>
 
 <body onload="cargarPagina()">
-  <h1>Etiquetatge dels dialèctes de wikipedia</h1>
+  <h1>Etiquetatge dels dialèctes del Wikipedia occitan</h1>
 
-  <div id="caissaFlex">
+  <div id="contenidor">
 
-    <div id="formulariDialecte">
-      <h3>Seleccionar lo dialècte:</h3>
+    <div class="fila">
 
-      <input type="hidden" name="nomFichierWiki" value="">
+      <div id="wiki" class="caissa">
+        <h3 id="nomFichierWiki"></h3>
+        <div id="contengutWiki"></div>
+      </div>
 
-      <form onsubmit="mandarDialecte(event)">
-        <div id="dialectOptions"></div>
-        <br>
-        <button type="button" onclick="mandarDialecte()">Mandar</button>
-      </form>
+      <div id="formulariDialecte" class="caissa">
+        <h3>Seleccionar lo dialècte</h3>
+
+        <input type="hidden" name="nomFichierWiki" value="">
+
+        <form onsubmit="mandarDialecte(event)">
+          <div id="dialectOptions"></div>
+          <br>
+          <div class="mandarDialecteBoton">
+            <button type="button" onclick="mandarDialecte()">Mandar</button>
+          </div>
+        </form>
+      </div>
+
     </div>
 
-    <div id="wiki">
-      <h3 id="nomFichierWiki"></h3>
-      <div id="contengutWiki"></div>
+    <div class="fila">
+
+      <div id="parametres" class="caissa">
+        <h3>Paramètres</h3>
+
+        <div>
+          <label for="seleccionFichier">Tecnica de seleccion de fichièr:</label>
+
+          <select name="seleccionFichier" id="seleccionFichier">
+            <option value="aleatori">Aleatòri</option>
+            <option value="fichier">Fichièr</option>
+          </select>
+        </div>
+        <br>
+
+      </div>
+
     </div>
 
   </div>
