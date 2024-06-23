@@ -1,0 +1,15 @@
+{
+    "etiquetas": [
+      {"id": "lengadocian", "name": "Lengadocian"},
+      {"id": "provençal", "name": "Provençal"},
+      {"id": "gascon", "name": "Gascon"},
+      {"id": "auvernhat", "name": "Auvernhat"},
+      {"id": "lemosin", "name": "Lemosin"},
+      {"id": "vivaroalpenc", "name": "Vivaroalpenc"},
+      {"id": "aranès", "name": "Aranès"},
+      {"id": "exclure", "name": "Exclure"},
+      {"id": "void", "name": "Void"},
+      {"id": "desconegut", "name": "Desconegut"}
+    ]
+  }
+  

@@ -1,0 +1,15 @@
+name: trobalecte
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10.13
+  - pip=24.0
+  - ipython=8.25.0
+  - ipykernel=6.28.0
+  - jupyter=1.0.0
+  - make=4.3
+  - nodejs=20.12.2
+  - setuptools=69.5.1
+  - pip:
+      - -r requirements.txt

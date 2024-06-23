@@ -1,0 +1,22 @@
+
+[tool.poetry]
+name = "trobalecte"
+version = "0.1.0"
+description = "Reconeissença automàtica dels diferents dialèctes occitans."
+authors = ["Olivier MF Martin"]
+repository = "https://github.com/omfmartin/trobalecte"
+keywords = ["occitan", "dialectology", "nlp"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 119
