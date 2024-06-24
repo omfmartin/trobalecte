@@ -8,19 +8,15 @@ async function cargar() {
 async function seleccionarPaginaWikipedia() {
 
     tecnicaSeleccionFichier = document.querySelector('#seleccionFichier').value;
-    console.log(tecnicaSeleccionFichier);
 
     let text = '';
     let nomFichierWiki = '';
-
-    if (tecnicaSeleccionFichier == "aleatori") {
-        try {
-            response = await fetch('/pagina-aleatoria');
-            text = await response.text();
-            nomFichierWiki = response["headers"].get("x-filename");
-        } catch (error) {
-            console.error('Fracàs de la lectura del fichièr HTML:', error);
-        }
+    try {
+        response = await fetch(`/pagina?tecnicaSeleccionFichier=${tecnicaSeleccionFichier}`);
+        text = await response.text();
+        nomFichierWiki = response["headers"].get("x-filename");
+    } catch (error) {
+        console.error('Fracàs de la lectura del fichièr HTML:', error);
     }
 
     document.getElementById('contengutWiki').innerHTML = text;

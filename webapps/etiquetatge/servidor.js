@@ -80,9 +80,13 @@ const tirarTexteHtml = (caminFichier, callback) => {
 // Endpoints
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// Rota per servir un fichièr HTML aleatòri coma tèxte simple
-app.get('/pagina-aleatoria', (req, res) => {
-    const nomFichierWiki = obtenirFichierAleatori();
+// Rota per servir una pagina Wikipedia
+app.get('/pagina', (req, res) => {
+    let nomFichierWiki = "";
+    if (req.query.tecnicaSeleccionFichier == "aleatori") {
+        nomFichierWiki = obtenirFichierAleatori();
+    }
+
     const caminFichierWiki = config.input.dossier_articles + "/" + nomFichierWiki;
 
     tirarTexteHtml(caminFichierWiki, (err, texte, nomFichier) => {
