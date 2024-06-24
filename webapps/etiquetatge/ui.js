@@ -1,24 +1,30 @@
-// Cargar configuracion
-const config = cargarConfig();
-
 // Cargar tota la pagina
 async function cargar() {
     seleccionarPaginaWikipedia();
-    apondreBotonsRadio()
+    apondreBotonsRadio();
 }
 
 // Selecionar pagina
 async function seleccionarPaginaWikipedia() {
 
-    response = await fetch('/pagina-aleatoria').catch(error => console.error('Fracàs de la lectura del fichièr HTML:', error));
+    tecnicaSeleccionFichier = document.querySelector('#seleccionFichier').value;
+    console.log(tecnicaSeleccionFichier);
 
-    const text = await response.text();
-    const nomFichierWiki = response["headers"].get("x-filename");
-    const ligamNomFichierWiki = `<a href="https://oc.wikipedia.org/wiki/${nomFichierWiki}">${nomFichierWiki}</a>`
-    console.log(ligamNomFichierWiki)
+    let text = '';
+    let nomFichierWiki = '';
+
+    if (tecnicaSeleccionFichier == "aleatori") {
+        try {
+            response = await fetch('/pagina-aleatoria');
+            text = await response.text();
+            nomFichierWiki = response["headers"].get("x-filename");
+        } catch (error) {
+            console.error('Fracàs de la lectura del fichièr HTML:', error);
+        }
+    }
 
     document.getElementById('contengutWiki').innerHTML = text;
-    document.getElementById("nomFichierWiki").innerHTML = ligamNomFichierWiki
+    document.getElementById("nomFichierWiki").innerHTML = `<a href="https://oc.wikipedia.org/wiki/${nomFichierWiki}">${nomFichierWiki}</a>`;
     document.querySelector('input[name="nomFichierWiki"]').value = nomFichierWiki;
 }
 

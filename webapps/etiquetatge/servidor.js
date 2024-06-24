@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio')
-const { cargarConfig } = require('./auxiliar.js');
 
 // Init app
 const app = express();
@@ -14,6 +13,25 @@ const config = cargarConfig();
 // Middlewares
 app.use(bodyParser.json());
 app.use(express.static('./webapps/etiquetatge'));
+
+const totesLosFichiers = legirTotesLosFichiers();
+let fichiersEtiquetats = legirFichiersEtiquetat();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Fonccions
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Cargar configuracion
+function cargarConfig() {
+    const data = fs.readFileSync(__dirname + '/config.json', 'utf-8');
+    const config = JSON.parse(data);
+    return config
+}
+
+// Definir un middleware per manejar errors
+const manejarError = (res, estatCodificacion, messatge) => {
+    res.status(estatCodificacion).send(messatge);
+};
 
 // Identificer totes los fichièrs
 function legirTotesLosFichiers() {
@@ -28,21 +46,13 @@ function legirFichiersEtiquetat() {
     return fichiersEtiquetats;
 }
 
-const totesLosFichiers = legirTotesLosFichiers();
-let fichiersEtiquetats = legirFichiersEtiquetat();
-
-// Definir un middleware per manejar errors
-const manejarError = (res, estatCodificacion, messatge) => {
-    res.status(estatCodificacion).send(messatge);
-};
-
 // Foncion per legir repertòri e tornar fichièr aleatòri
 function obtenirFichierAleatori() {
     const seleccion = totesLosFichiers.filter(x => !fichiersEtiquetats.includes(x));
     return seleccion[Math.floor(Math.random() * seleccion.length)];
 };
 
-// Foncion per legir fichièr e extrach tèxte
+// Legir fichièr e extraire tèxte
 const tirarTexteHtml = (caminFichier, callback) => {
     fs.readFile(caminFichier, 'utf8', (err, donadas) => {
         if (err) return callback(err);
@@ -54,6 +64,10 @@ const tirarTexteHtml = (caminFichier, callback) => {
         callback(null, texte, path.basename(caminFichier));
     });
 };
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Endpoints
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Rota per servir un fichièr HTML aleatòri coma tèxte simple
 app.get('/pagina-aleatoria', (req, res) => {
@@ -81,6 +95,10 @@ app.post('/mandar-dialecte', (req, res) => {
     });
     fichiersEtiquetats.push(nomFichierWiki);
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// App listen
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.listen(config.parametres.port, () => {
     console.log(`Servidor en execucion a http://localhost:${config.parametres.port}`);
