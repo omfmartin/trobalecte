@@ -16,6 +16,7 @@ app.use(express.static('./webapps/etiquetatge'));
 
 const totesLosFichiers = legirTotesLosFichiers();
 let fichiersEtiquetats = legirFichiersEtiquetat();
+let fichierSeleccionArticles = legirFichierSeleccionArticles();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Fonccions
@@ -33,7 +34,7 @@ const manejarError = (res, estatCodificacion, messatge) => {
     res.status(estatCodificacion).send(messatge);
 };
 
-// Identificer totes los fichièrs
+// Legir totes los fichièrs de Wikipedia
 function legirTotesLosFichiers() {
     return fs.readdirSync(config.input.dossier_articles);
 }
@@ -42,8 +43,18 @@ function legirTotesLosFichiers() {
 function legirFichiersEtiquetat() {
     let donadas = fs.readFileSync(config.output.fichier_etiquetas, "utf-8");
     const linhas = donadas.split("\n").filter(linha => linha.trim() !== "");
-    const fichiersEtiquetats = linhas.map(linha => linha.split(',')[0]);
-    return fichiersEtiquetats;
+    const fichiers = linhas.map(linha => linha.split(',')[0]);
+    return fichiers;
+}
+
+function legirFichierSeleccionArticles() {
+    try {
+        let donadas = fs.readFileSync(config.input.fichier_seleccion_articles, "utf-8");
+        const linhas = donadas.split("\n").filter(linha => linha.trim() !== "");
+        return linhas;
+    } catch (error) {
+        return [];
+    }
 }
 
 // Foncion per legir repertòri e tornar fichièr aleatòri
