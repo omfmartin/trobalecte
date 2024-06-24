@@ -66,8 +66,8 @@ a {
     flex: 0 0 100%;
 }
 
-textarea {
-    resize: none;
-    white-space: nowrap;
-    overflow-x: scroll;
+#botons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
 }

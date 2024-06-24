@@ -16,7 +16,8 @@ async function seleccionarPaginaWikipedia() {
         text = await response.text();
         nomFichierWiki = response["headers"].get("x-filename");
     } catch (error) {
-        console.error('Fracàs de la lectura del fichièr HTML:', error);
+        debugger;
+        console.error(error);
     }
 
     document.getElementById('contengutWiki').innerHTML = text;
@@ -60,7 +61,7 @@ function mandarDialecte() {
         .then(responsa => responsa.text())
         .then(resultat => {
             console.log(resultat);
-            cargarPagina();
+            seleccionarPaginaWikipedia();
         })
         .catch(error => console.error('Fracàs del mandadís del dialècte:', error));
 }

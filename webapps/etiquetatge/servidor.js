@@ -57,10 +57,21 @@ function legirFichierSeleccionArticles() {
     }
 }
 
-// Foncion per legir repertòri e tornar fichièr aleatòri
-function obtenirFichierAleatori() {
+// Tornar paginas
+function obtenirPaginaAleatoria() {
     const seleccion = totesLosFichiers.filter(x => !fichiersEtiquetats.includes(x));
+    if (seleccion.length === 0) {
+        throw new Error('I a pas de pagina seleccionable!');
+    }
     return seleccion[Math.floor(Math.random() * seleccion.length)];
+};
+
+function obtenirPaginaFichier() {
+    const seleccion = fichierSeleccionArticles.filter(x => !fichiersEtiquetats.includes(x));
+    if (seleccion.length === 0) {
+        throw new Error('I a pas de pagina seleccionable!');
+    }
+    return seleccion[0];
 };
 
 // Legir fichièr e extraire tèxte
@@ -82,16 +93,26 @@ const tirarTexteHtml = (caminFichier, callback) => {
 
 // Rota per servir una pagina Wikipedia
 app.get('/pagina', (req, res) => {
+    debugger;
+
     let nomFichierWiki = "";
-    if (req.query.tecnicaSeleccionFichier == "aleatori") {
-        nomFichierWiki = obtenirFichierAleatori();
+    try {
+        if (req.query.tecnicaSeleccionFichier == "aleatori") {
+            nomFichierWiki = obtenirPaginaAleatoria();
+        } else if (req.query.tecnicaSeleccionFichier == "fichier") {
+            nomFichierWiki = obtenirPaginaFichier();
+        }
     }
+    catch (error) {
+        return manejarError(res, 400, error);
+    }
+    console.log(nomFichierWiki);
 
     const caminFichierWiki = config.input.dossier_articles + "/" + nomFichierWiki;
-
-    tirarTexteHtml(caminFichierWiki, (err, texte, nomFichier) => {
-        if (err) return manejarError(res, 500, 'Fracàs de la lectura del fichièr.');
-
+    tirarTexteHtml(caminFichierWiki, (error, texte, nomFichier) => {
+        if (error) {
+            return manejarError(res, 500, 'Fracàs de la lectura del fichièr.');
+        }
         res.setHeader('Content-Type', 'text/plain');
         res.setHeader('X-Filename', nomFichier);
         res.send(texte);
