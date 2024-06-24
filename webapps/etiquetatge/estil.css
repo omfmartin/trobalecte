@@ -1,69 +1,80 @@
 body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
+    color: #333;
 }
 
 button {
     background-color: #C1000A;
-    color: white;
-    padding: 10px 15px;
+    color: #fff;
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #210102;
+    background-color: #900007;
 }
 
-
 h1 {
-    font-stretch: extra-expanded;
+    font-weight: bold;
     text-align: center;
     color: #C1000A;
+    margin-bottom: 20px;
 }
 
 h3 {
     color: #C1000A;
+    margin-bottom: 10px;
 }
 
 a {
     color: #C1000A;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #900007;
 }
 
 .caissa {
-    margin: 5px 5px 5px 5px;
-    background: white;
-    padding: 10px 30px 15px 25px;
+    background: #fff;
+    padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
 }
-
 
 .fila {
     display: flex;
     width: 100%;
+    gap: 5px;
 }
-
 
 #contenidor {
     display: flex;
     flex-direction: column;
     width: 100%;
+    gap: 20px;
 }
 
 #formulariDialecte {
-    flex: 0 0 29%;
+    height: 22em;
+    flex: 0 0 30%;
 }
 
 #wiki {
+    height: 22em;
     flex: 0 0 70%;
+    overflow: scroll;
 }
 
 #parametres {
-    flex: 0 0 100%;
+    flex: 1 1 100%;
 }
 
 #botons {
