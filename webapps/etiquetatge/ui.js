@@ -1,17 +1,30 @@
-async function cargarPagina() {
-    // Selecionar pagina
-    responsa = await fetch('/pagina-aleatoria')
-        .catch(error => console.error('Fracàs de la lectura del fichièr HTML:', error));
+// Cargar configuracion
+const config = cargarConfig();
 
-    document.getElementById('contengutWiki').innerHTML = await responsa.text();
+// Cargar tota la pagina
+async function cargar() {
+    seleccionarPaginaWikipedia();
+    apondreBotonsRadio()
+}
 
-    const nomFichierWiki = await responsa["headers"].get("x-filename");
-    document.getElementById("nomFichierWiki").innerHTML = '<a href="https://oc.wikipedia.org/wiki/"'
-        + nomFichierWiki + '>' + nomFichierWiki + '</a>';
+// Selecionar pagina
+async function seleccionarPaginaWikipedia() {
+
+    response = await fetch('/pagina-aleatoria').catch(error => console.error('Fracàs de la lectura del fichièr HTML:', error));
+
+    const text = await response.text();
+    const nomFichierWiki = response["headers"].get("x-filename");
+    const ligamNomFichierWiki = `<a href="https://oc.wikipedia.org/wiki/${nomFichierWiki}">${nomFichierWiki}</a>`
+    console.log(ligamNomFichierWiki)
+
+    document.getElementById('contengutWiki').innerHTML = text;
+    document.getElementById("nomFichierWiki").innerHTML = ligamNomFichierWiki
     document.querySelector('input[name="nomFichierWiki"]').value = nomFichierWiki;
+}
 
-    // Apondre botons radiò
-    const response = await fetch('./config.json');
+// Apondre botons radiò
+async function apondreBotonsRadio() {
+    response = await fetch('./config.json');
     const data = await response.json();
     const container = document.getElementById('dialectOptions');
     data.etiquetas.forEach(dialect => {
@@ -30,6 +43,7 @@ async function cargarPagina() {
         container.appendChild(document.createElement('br'));
     });
 }
+
 
 function mandarDialecte() {
     const nomFichierWiki = document.querySelector('input[name="nomFichierWiki"]').value;

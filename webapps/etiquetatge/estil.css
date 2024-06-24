@@ -18,9 +18,6 @@ button:hover {
     background-color: #210102;
 }
 
-.mandarDialecteBoton {
-    text-align: left;
-}
 
 h1 {
     font-stretch: extra-expanded;
@@ -32,6 +29,10 @@ h3 {
     color: #C1000A;
 }
 
+a {
+    color: #C1000A;
+}
+
 .caissa {
     margin: 5px 5px 5px 5px;
     background: white;
@@ -40,14 +41,16 @@ h3 {
     box-sizing: border-box;
 }
 
-#contenidor {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
 
 .fila {
     display: flex;
+    width: 100%;
+}
+
+
+#contenidor {
+    display: flex;
+    flex-direction: column;
     width: 100%;
 }
 

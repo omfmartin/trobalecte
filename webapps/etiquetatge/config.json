@@ -11,6 +11,9 @@
       {"id": "void", "name": "Void"},
       {"id": "desconegut", "name": "Desconegut"}
     ],
+    "parametres": {
+      "port": 3000
+    },
     "input": {
       "dossier_articles": "./donadas/brut/wikipedia/A",
       "fichier_seleccion_articles": "./donadas/processat/seleccion_paginas_entropia.csv"
