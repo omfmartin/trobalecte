@@ -4,6 +4,7 @@ models/*
 webapps/*/node_modules/
 webapps/*/package-lock.json
 quaserns/mlruns
+TODO.md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

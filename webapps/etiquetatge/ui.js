@@ -7,16 +7,15 @@ async function cargar() {
 // Selecionar pagina
 async function seleccionarPaginaWikipedia() {
 
-    tecnicaSeleccionFichier = document.querySelector('#seleccionFichier').value;
+    tecnicaSeleccionPagina = document.querySelector('#tecnicaSeleccionPagina').value;
 
     let text = '';
     let nomFichierWiki = '';
     try {
-        response = await fetch(`/pagina?tecnicaSeleccionFichier=${tecnicaSeleccionFichier}`);
+        response = await fetch(`/pagina?tecnicaSeleccionPagina=${tecnicaSeleccionPagina}`);
         text = await response.text();
         nomFichierWiki = response["headers"].get("x-filename");
     } catch (error) {
-        debugger;
         console.error(error);
     }
 

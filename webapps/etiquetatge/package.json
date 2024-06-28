@@ -2,7 +2,8 @@
   "name": "etiquetatge",
   "version": "0.1.0",
   "description": "Espleit d'etiquetatge de paginas Wikipedia",
-  "main": "servidor.js",
+  "main": "main.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

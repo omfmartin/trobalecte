@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Etiquetatge dels dialèctes de wikipedia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trobalècte - Etiquetatge</title>
   <script src="./ui.js"></script>
   <link rel="stylesheet" href="./estil.css">
   <link rel="icon" type="image/x-icon" href="icon.ico">
@@ -15,7 +16,6 @@
   <div id="contenidor">
 
     <div class="fila">
-
       <div id="wiki" class="caissa">
         <h3 id="nomFichierWiki"></h3>
         <div id="contengutWiki"></div>
@@ -23,46 +23,29 @@
 
       <div id="formulariDialecte" class="caissa">
         <h3>Seleccionar lo dialècte</h3>
-
         <input type="hidden" name="nomFichierWiki" value="">
-
         <form onsubmit="mandarDialecte(event)">
           <div id="dialectOptions"></div>
-          <br>
           <div id="botons">
-            <div class="mandarDialecteBoton">
-              <button type="button" onclick="mandarDialecte()">Mandar</button>
-            </div>
-            <div class="cargarPaginaBoton">
-              <button type="button" onclick="seleccionarPaginaWikipedia()">Novela pagina</button>
-            </div>
+            <button type="button" onclick="mandarDialecte()">Mandar</button>
+            <button type="button" onclick="seleccionarPaginaWikipedia()">Novela pagina</button>
           </div>
         </form>
       </div>
-
     </div>
 
     <div class="fila">
-
       <div id="parametres" class="caissa">
         <h3>Paramètres</h3>
-
-        <div>
-          <label for="seleccionFichier">Tecnica de seleccion de fichièr:</label>
-
-          <select name="seleccionFichier" id="seleccionFichier">
-            <option value="aleatori">Aleatòri</option>
-            <option value="fichier">Fichièr</option>
-          </select>
-        </div>
-        <br>
-
+        <label for="tecnicaSeleccionPagina">Tecnica de seleccion de pagina Wikipedia:</label>
+        <select name="tecnicaSeleccionPagina" id="tecnicaSeleccionPagina">
+          <option value="aleatori">Aleatòri</option>
+          <option value="fichier">Fichièr</option>
+        </select>
       </div>
-
     </div>
 
   </div>
-
 </body>
 
 </html>

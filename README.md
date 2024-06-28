@@ -49,7 +49,7 @@ L'etiquetatge consistís a asssociar de paginas Wikipedia amb un dialècte occit
 L'**etiquetatge manual** se fa amb l'espleit d'etiquetatge. Trobaretz los resultats dins lo fichièr `./donadas/etiquetas/wikipedia_etiquetat_manual.csv`. Per lançar l'otís d'etiquetatge:
 
 ```shell
-node ./webapps/etiquetatge/servidor.js
+node ./webapps/etiquetatge/main.js
 ```
 
 L'**etiquetatge automàtic** se fa utilizant dels mots típics e únics als dialèctes occitans . Per ejemple la conjugación del vèrb èstre "z-es" permet de saber que se tracta de l'auvèrnhat.
