@@ -29,12 +29,14 @@ let paginasFichierSeleccion = helpers.legirPaginasFichierSeleccion(config);
 
 // Rota per servir una pagina Wikipedia
 app.get('/pagina', (req, res) => {
+    console.profile();
     let nomFichierWiki = "";
     try {
         if (req.query.tecnicaSeleccionPagina == "aleatori") {
             nomFichierWiki = helpers.obtenirPaginaAleatoria(paginasTotas, paginasEtiquetadas);
-        } else if (req.query.tecnicaSeleccionPagina == "fichier") {
+        } else if (req.query.tecnicaSeleccionPagina == "entropia") {
             nomFichierWiki = helpers.obtenirPaginaFichier(paginasFichierSeleccion, paginasEtiquetadas);
+            paginasFichierSeleccion.shift();
         }
     }
     catch (error) {
@@ -42,7 +44,7 @@ app.get('/pagina', (req, res) => {
     }
     console.log(nomFichierWiki);
 
-    const caminFichierWiki = config.input.dossier_articles + "/" + nomFichierWiki;
+    const caminFichierWiki = `${config.input.dossier_articles}/${nomFichierWiki}`;
     helpers.tirarTexteHtml(caminFichierWiki, (error, texte, nomFichier) => {
         if (error) {
             return helpers.manejarError(res, 500, 'Fracàs de la lectura del fichièr.');
@@ -51,19 +53,23 @@ app.get('/pagina', (req, res) => {
         res.setHeader('X-Filename', nomFichier);
         res.send(texte);
     });
+    console.profileEnd();
 });
 
 // Seleccion del dialècte e salvar dins un CSV
 app.post('/mandar-dialecte', (req, res) => {
-    const { nomPagina, dialecte } = req.body;
-    const linhaCSV = `${nomPagina},${dialecte}\n`;
-    fs.appendFile(config.output.fichier_etiquetas, linhaCSV, (err) => {
+    const { nomFichierWiki, dialecte } = req.body;
+    const linhaCSV = `${nomFichierWiki},${dialecte}\n`;
+    const tecnicaSeleccionPagina = req.query.tecnicaSeleccionPagina;
+    const camin_fichier = `${config.output.fichier_etiquetas}/wikipedia_dialectes_${tecnicaSeleccionPagina}.csv`
+
+    fs.appendFile(camin_fichier, linhaCSV, (err) => {
         if (err) {
             return helpers.manejarError(res, 500, 'Fracàs de salvar las donadas.');
         }
         res.send('Donadas salvadas amb succès.');
     });
-    paginasEtiquetadas.push(nomPagina);
+    paginasEtiquetadas.push(nomFichierWiki);
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

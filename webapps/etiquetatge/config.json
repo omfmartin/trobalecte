@@ -16,9 +16,9 @@
     },
     "input": {
       "dossier_articles": "./donadas/brut/wikipedia/A",
-      "fichier_seleccion_articles": "./donadas/processat/seleccion_paginas_entropia.txt"
+      "fichier_seleccion_articles": "./donadas/prediccions/xgboost/seleccion_paginas_entropia.txt"
     },
     "output": {
-      "fichier_etiquetas": "./donadas/prediccions/seleccion_paginas_entropia.txt"
+      "dossier_etiquetas": "./donadas/etiquetas/"
     }
   }

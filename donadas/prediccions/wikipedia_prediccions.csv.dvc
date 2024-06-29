@@ -1,5 +1,0 @@
-outs:
-- md5: cf7310cfe8b89e95f830d1b1c0b7012a
-  size: 7230803
-  hash: md5
-  path: wikipedia_prediccions.csv

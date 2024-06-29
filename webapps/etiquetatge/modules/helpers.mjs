@@ -17,13 +17,24 @@ function legirPaginasTotas(config) {
     return fs.readdirSync(config.input.dossier_articles);
 }
 
+
 // Identificar los fichèrs ja etiquetats
 function legirPaginasEtiquetatas(config) {
-    let donadas = fs.readFileSync(config.output.fichier_etiquetas, "utf-8");
-    const linhas = donadas.split("\n").filter(linha => linha.trim() !== "");
-    const fichiers = linhas.map(linha => linha.split(',')[0]);
-    return fichiers;
+    const dossierEtiquetas = config.output.dossier_etiquetas;
+    const fichiers = fs.readdirSync(dossierEtiquetas).filter(f => path.extname(f) === '.csv');
+
+    const paginas = fichiers.flatMap(f => {
+        const camin = path.join(dossierEtiquetas, f);
+        const donadas = fs.readFileSync(camin, 'utf-8');
+        return donadas
+            .split('\n')
+            .filter(linha => linha.trim() !== '')
+            .map(linha => linha.split(',')[0]);
+    });
+
+    return paginas;
 }
+
 
 function legirPaginasFichierSeleccion(config) {
     try {

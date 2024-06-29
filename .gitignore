@@ -4,8 +4,8 @@ donadas/brut
 donadas/processat
 donadas/etiquetas/*.csv
 donadas/etiquetas/*.txt
-donadas/prediccions/*.csv
-donadas/prediccions/*.txt
+donadas/prediccions/xgboost/*.csv
+donadas/prediccions/xgboost/*.txt
 
 models/*
 
