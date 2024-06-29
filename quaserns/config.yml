@@ -1,0 +1,23 @@
+camins:
+  texte:
+    dossier_articles_wiki: "../donadas/brut/wikipedia/A"
+    fichier_wiki_texte: "../donadas/processat/wikipedia_texte.csv"
+  etiquetas:
+    fichier_wiki_etiquetas_manual: "../donadas/etiquetas/wikipedia_dialectes_manual.csv"
+    fichier_wiki_etiquetas_automatic: "../donadas/etiquetas/wikipedia_dialectes_automatic.csv"
+    fichier_wiki_etiquetas_entropia: "../donadas/etiquetas/wikipedia_dialectes_entropia.csv"
+  tokenizaire:
+    dossier_tokenizaire: "../models/tokenizaire"
+  classificador:
+    prediccions: "../models/classificador/wikipedia_prediccions.csv"
+    dossier_model: "../models/classificador/"
+
+parametres:
+  longor_min: 50
+  longor_max: "inf"
+
+dialectes:
+  - gascon
+  - provençal
+  - auvernhat
+  - lengadocian
