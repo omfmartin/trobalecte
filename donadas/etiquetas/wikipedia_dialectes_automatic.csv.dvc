@@ -1,0 +1,5 @@
+outs:
+- md5: c7fa9d05c34dcee29c42f69fc677b304
+  size: 208942
+  hash: md5
+  path: wikipedia_dialectes_automatic.csv

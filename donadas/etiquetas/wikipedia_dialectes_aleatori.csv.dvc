@@ -1,0 +1,5 @@
+outs:
+- md5: 5bb3f8e36eb00cf97777db71ecfe6125
+  size: 13316
+  hash: md5
+  path: wikipedia_dialectes_aleatori.csv
