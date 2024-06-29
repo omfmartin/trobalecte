@@ -32,7 +32,8 @@ function legirPaginasEtiquetatas(config) {
             .map(linha => linha.split(',')[0]);
     });
 
-    return paginas;
+    const ensemble_paginas = new Set(paginas);
+    return ensemble_paginas;
 }
 
 
@@ -48,21 +49,21 @@ function legirPaginasFichierSeleccion(config) {
 }
 
 // Tornar paginas
-function obtenirPaginaAleatoria(paginasTotas, paginasEtiquetadas) {
-    const seleccion = paginasTotas.filter(x => !paginasEtiquetadas.includes(x));
-    if (seleccion.length === 0) {
+function obtenirPagina(paginas) {
+    if (paginas.length === 0) {
         throw new errors.CapDePaginaError('I a pas de pagina seleccionable!');
     }
-    return seleccion[Math.floor(Math.random() * seleccion.length)];
+    return paginas[0];
 };
 
-function obtenirPaginaFichier(paginasFichierSeleccion, paginasEtiquetadas) {
-    const seleccion = paginasFichierSeleccion.filter(x => !paginasEtiquetadas.includes(x));
-    if (seleccion.length === 0) {
-        throw new errors.CapDePaginaError('I a pas de pagina seleccionable!');
+// Shuffle
+function fisherYatesShuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    return seleccion[0];
-};
+    return arr;
+}
 
 // Legir fichièr e extraire tèxte
 function tirarTexteHtml(caminFichier, callback) {
@@ -86,7 +87,7 @@ function manejarError(res, estatCodificacion, messatge) {
 export default {
     legirConfiguracion, legirPaginasTotas,
     legirPaginasEtiquetatas, legirPaginasFichierSeleccion,
-    obtenirPaginaAleatoria, obtenirPaginaFichier,
+    obtenirPagina, fisherYatesShuffle,
     tirarTexteHtml,
     manejarError
 }

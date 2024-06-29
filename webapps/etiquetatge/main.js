@@ -19,9 +19,14 @@ app.use(express.static('./webapps/etiquetatge'));
 const config = helpers.legirConfiguracion();
 
 // Cargar paginas
-const paginasTotas = helpers.legirPaginasTotas(config);
 let paginasEtiquetadas = helpers.legirPaginasEtiquetatas(config);
-let paginasFichierSeleccion = helpers.legirPaginasFichierSeleccion(config);
+
+let paginasTotas = helpers.legirPaginasTotas(config)
+    .filter(x => !paginasEtiquetadas.has(x));
+paginasTotas = helpers.fisherYatesShuffle(paginasTotas);
+
+let paginasFichierSeleccion = helpers.legirPaginasFichierSeleccion(config)
+    .filter(x => !paginasEtiquetadas.has(x));
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Endpoints
@@ -33,9 +38,11 @@ app.get('/pagina', (req, res) => {
     let nomFichierWiki = "";
     try {
         if (req.query.tecnicaSeleccionPagina == "aleatori") {
-            nomFichierWiki = helpers.obtenirPaginaAleatoria(paginasTotas, paginasEtiquetadas);
+            nomFichierWiki = helpers.obtenirPagina(paginasTotas);
+            paginasTotas.shift();
+
         } else if (req.query.tecnicaSeleccionPagina == "entropia") {
-            nomFichierWiki = helpers.obtenirPaginaFichier(paginasFichierSeleccion, paginasEtiquetadas);
+            nomFichierWiki = helpers.obtenirPagina(paginasFichierSeleccion);
             paginasFichierSeleccion.shift();
         }
     }
