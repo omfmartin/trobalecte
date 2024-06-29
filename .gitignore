@@ -1,9 +1,19 @@
 archius/
-donadas/*
+
+donadas/brut
+donadas/processat
+donadas/etiquetas/*.csv
+donadas/etiquetas/*.txt
+donadas/prediccions/*.csv
+donadas/prediccions/*.txt
+
 models/*
+
 webapps/*/node_modules/
 webapps/*/package-lock.json
+
 quaserns/mlruns
+
 TODO.md
 
 # Byte-compiled / optimized / DLL files

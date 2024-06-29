@@ -19,6 +19,6 @@
       "fichier_seleccion_articles": "./donadas/processat/seleccion_paginas_entropia.txt"
     },
     "output": {
-      "fichier_etiquetas": "./donadas/etiquetas/wikipedia_dialectes_manual.csv"
+      "fichier_etiquetas": "./donadas/prediccions/seleccion_paginas_entropia.txt"
     }
   }

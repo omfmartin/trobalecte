@@ -9,8 +9,9 @@ camins:
   tokenizaire:
     dossier_tokenizaire: "../models/tokenizaire"
   classificador:
-    prediccions: "../models/classificador/wikipedia_prediccions.csv"
     dossier_model: "../models/classificador/"
+    prediccions: "../donadas/prediccions/wikipedia_prediccions.csv"
+    seleccion_paginas: "../donadas/prediccions/seleccion_paginas_entropia.txt"
 
 parametres:
   longor_min: 50
