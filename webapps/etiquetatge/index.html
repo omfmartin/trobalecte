@@ -4,48 +4,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trobalècte - Etiquetatge</title>
+  <title>Trobalècte: Espleit d'etiquetatge</title>
   <script src="./ui.js"></script>
   <link rel="stylesheet" href="./estil.css">
   <link rel="icon" type="image/x-icon" href="icon.ico">
 </head>
 
 <body onload="cargar()">
-  <h1>Etiquetatge dels dialèctes del Wikipedia occitan</h1>
+  <header>
+    <h1>Trobalècte: Espleit d'etiquetatge</h1>
+  </header>
 
-  <div id="contenidor">
+  <main>
+    <div class="rengada mesme-nautor">
 
-    <div class="fila">
       <div id="wiki" class="caissa">
-        <h3 id="nomFichierWiki"></h3>
+        <h2 id="nomFichierWiki"></h2>
         <div id="contengutWiki"></div>
       </div>
 
       <div id="formulariDialecte" class="caissa">
-        <h3>Seleccionar lo dialècte</h3>
+        <h2>Seleccionar lo dialècte</h2>
         <input type="hidden" name="nomFichierWiki" value="">
         <form onsubmit="mandarDialecte(event)">
           <div id="dialectOptions"></div>
           <div id="botons">
-            <button type="button" onclick="mandarDialecte()">Mandar</button>
-            <button type="button" onclick="seleccionarPaginaWikipedia()">Novela pagina</button>
+            <button type="button" class="btn segondari" onclick="seleccionarPaginaWikipedia()">Novela pagina</button>
+            <button type="button" class="btn primari" onclick="mandarDialecte()">Mandar</button>
+
           </div>
         </form>
       </div>
+
     </div>
 
-    <div class="fila">
+    <div class="rengada">
       <div id="parametres" class="caissa">
-        <h3>Paramètres</h3>
-        <label for="tecnicaSeleccionPagina">Tecnica de seleccion de pagina Wikipedia:</label>
+        <h2>Paramètres</h2>
+        <label for="tecnicaSeleccionPagina">Tecnica de seleccion:</label>
         <select name="tecnicaSeleccionPagina" id="tecnicaSeleccionPagina">
           <option value="aleatori">Aleatòri</option>
           <option value="entropia">Entropia</option>
         </select>
       </div>
     </div>
+  </main>
 
-  </div>
 </body>
 
 </html>

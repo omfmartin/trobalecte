@@ -46,7 +46,7 @@ async function apondreBotonsRadio() {
     });
 }
 
-
+// Escriure dialècte dins lo fichièr
 function mandarDialecte() {
     const nomFichierWiki = document.querySelector('input[name="nomFichierWiki"]').value;
     const dialecte = document.querySelector('input[name="dialecte"]:checked').value;

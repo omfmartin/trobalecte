@@ -1,3 +1,13 @@
+:root {
+    --color-primari: #DD0000;
+    --color-segondari: #FFD700;
+    --color-accent: #007A5E;
+    --color-fons: #FFF5E6;
+    --color-texte: #333333;
+    --color-fons-caissa: #FFFFFF;
+    --color-boton-hover: #B80000;
+}
+
 *,
 *::before,
 *::after {
@@ -5,85 +15,124 @@
 }
 
 body {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-fons);
+    color: var(--color-texte);
+    line-height: 1.5;
     margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
+    padding: 0;
 }
 
-button {
-    background-color: #C1000A;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+header {
+    background-color: var(--primary-color);
+    text-align: center;
+    margin: 30px 0 30px 0;
 }
 
-button:hover {
-    background-color: #900007;
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px 20px 20px 20px;
+    gap: 20px;
 }
+
 
 h1 {
-    font-weight: bold;
-    text-align: center;
-    color: #C1000A;
-    margin-bottom: 20px;
+    font-weight: 700;
+    margin: 0;
 }
 
-h3 {
-    color: #C1000A;
-    margin-bottom: 10px;
+h2 {
+    color: var(--color-primari);
+    margin-bottom: 20px;
+    font-size: larger;
 }
 
 a {
-    color: #C1000A;
+    color: var(--color-primari);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #900007;
+    color: var(--color-segondari);
 }
 
 .caissa {
-    background: #fff;
+    background: var(--color-fons-caissa);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.fila {
+.rengada {
     display: flex;
-    width: 100%;
-    gap: 5px;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-#contenidor {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 20px;
+
+#wiki {
+    flex: 0 0 70%;
+    overflow-y: auto;
+    max-height: 100%;
 }
 
 #formulariDialecte {
-    height: 21em;
     flex: 0 0 30%;
 }
 
-#wiki {
-    height: 21em;
-    flex: 0 0 70%;
-    overflow: scroll;
+#parametres {
+    width: 100%;
 }
 
-#parametres {
-    flex: 1 1 100%;
+.mesme-nautor {
+    display: flex;
+    align-items: stretch;
+    max-height: 400px;
 }
 
 #botons {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn.primari {
+    background-color: var(--color-primari);
+    color: white;
+}
+
+.btn.primari:hover {
+    background-color: var(--color-segondari);
+}
+
+.btn.segondari {
+    background-color: #e0e0e0;
+    color: var(--color-texte);
+}
+
+.btn.secondary:hover {
+    background-color: #d0d0d0;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+    }
+
+    .wiki-section,
+    .form-section {
+        flex: 0 0 100%;
+    }
 }
