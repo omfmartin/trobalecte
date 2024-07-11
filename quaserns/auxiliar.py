@@ -4,12 +4,12 @@ import numpy as np
 import pandas as pd
 
 
-def crear_ensemble_donadas(texte_df: pd.DataFrame, lista_dialectes_df: list[pd.DataFrame]) -> pd.DataFrame:
+def crear_ensemble_donadas(texte_df: pd.DataFrame, dict_dialectes_df: dict[str, pd.DataFrame]) -> pd.DataFrame:
     """
     Combinar etiquetas e tèxte
     """
     # Concatenar etiquetas manualas e automaticas
-    dialectes_df = pd.concat(lista_dialectes_df, axis=0)
+    dialectes_df = pd.concat(dict_dialectes_df.values(), axis=0)
     dialectes_df = dialectes_df.drop_duplicates(subset=["Article"])
     dialectes_df = dialectes_df.query(
         'Dialecte not in ["void", "exclure", "desconegut", "vivaroalpenc", "lemosin", "aranés"]'
