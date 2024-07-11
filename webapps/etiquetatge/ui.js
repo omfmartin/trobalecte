@@ -12,9 +12,13 @@ async function seleccionarPaginaWikipedia() {
     let text = '';
     let nomFichierWiki = '';
     try {
-        response = await fetch(`/pagina?tecnicaSeleccionPagina=${tecnicaSeleccionPagina}`);
-        text = await response.text();
-        nomFichierWiki = response["headers"].get("x-filename");
+        json_data = await fetch(`/pagina?tecnicaSeleccionPagina=${tecnicaSeleccionPagina}`)
+            .then(response => response.json())
+            .catch((err) => {
+                console.log(`Error: ${err}`)
+            })
+        text = json_data.text;
+        nomFichierWiki = json_data.nomFichierWiki;
     } catch (error) {
         console.error(error);
     }

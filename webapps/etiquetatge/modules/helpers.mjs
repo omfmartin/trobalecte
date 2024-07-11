@@ -70,11 +70,11 @@ function tirarTexteHtml(caminFichier, callback) {
     fs.readFile(caminFichier, 'utf8', (err, donadas) => {
         if (err) return callback(err);
         const $ = cheerio.load(donadas);
-        let texte = '';
+        let text = '';
         $('p').each(function () {
-            texte += $(this).text() + '\n';
+            text += $(this).text() + '\n';
         });
-        callback(null, texte, path.basename(caminFichier));
+        callback(null, text, path.basename(caminFichier));
     });
 };
 

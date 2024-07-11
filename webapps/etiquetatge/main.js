@@ -34,7 +34,6 @@ let paginasFichierSeleccion = helpers.legirPaginasFichierSeleccion(config)
 
 // Rota per servir una pagina Wikipedia
 app.get('/pagina', (req, res) => {
-    console.profile();
     let nomFichierWiki = "";
     try {
         if (req.query.tecnicaSeleccionPagina == "aleatori") {
@@ -52,15 +51,16 @@ app.get('/pagina', (req, res) => {
     console.log(nomFichierWiki);
 
     const caminFichierWiki = `${config.input.dossier_articles}/${nomFichierWiki}`;
-    helpers.tirarTexteHtml(caminFichierWiki, (error, texte, nomFichier) => {
+    helpers.tirarTexteHtml(caminFichierWiki, (error, text, nomFichierWiki) => {
         if (error) {
             return helpers.manejarError(res, 500, 'Fracàs de la lectura del fichièr.');
         }
-        res.setHeader('Content-Type', 'text/plain');
-        res.setHeader('X-Filename', nomFichier);
-        res.send(texte);
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({
+            nomFichierWiki: nomFichierWiki,
+            text: text
+        }));
     });
-    console.profileEnd();
 });
 
 // Seleccion del dialècte e salvar dins un CSV
