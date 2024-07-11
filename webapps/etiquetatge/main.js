@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import fs from "fs";
 
 import helpers from "./modules/helpers.mjs";
+import { debug } from "console";
 
 // Init app
 const app = express();
@@ -65,10 +66,16 @@ app.get('/pagina', (req, res) => {
 
 // Seleccion del dialècte e salvar dins un CSV
 app.post('/mandar-dialecte', (req, res) => {
-    const { nomFichierWiki, dialecte } = req.body;
+    debugger;
+
+    const { nomFichierWiki, dialecte, tecnicaSeleccionPagina } = req.body;
     const linhaCSV = `${nomFichierWiki},${dialecte}\n`;
-    const tecnicaSeleccionPagina = req.query.tecnicaSeleccionPagina;
-    const camin_fichier = `${config.output.fichier_etiquetas}/wikipedia_dialectes_${tecnicaSeleccionPagina}.csv`
+    const camin_fichier = `${config.output.dossier_etiquetas}/wikipedia_dialectes_${tecnicaSeleccionPagina}.csv`
+
+    console.log(nomFichierWiki);
+    console.log(dialecte);
+    console.log(tecnicaSeleccionPagina);
+
 
     fs.appendFile(camin_fichier, linhaCSV, (err) => {
         if (err) {
@@ -76,7 +83,7 @@ app.post('/mandar-dialecte', (req, res) => {
         }
         res.send('Donadas salvadas amb succès.');
     });
-    paginasEtiquetadas.push(nomFichierWiki);
+
 });
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

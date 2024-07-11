@@ -79,8 +79,8 @@ function tirarTexteHtml(caminFichier, callback) {
 };
 
 // Definir un middleware per manejar errors
-function manejarError(res, estatCodificacion, messatge) {
-    res.status(estatCodificacion).send(messatge);
+function manejarError(res, codiResponsa, messatge) {
+    res.status(codiResponsa).send(messatge);
 }
 
 

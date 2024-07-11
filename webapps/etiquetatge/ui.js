@@ -7,7 +7,7 @@ async function cargar() {
 // Selecionar pagina
 async function seleccionarPaginaWikipedia() {
 
-    tecnicaSeleccionPagina = document.querySelector('#tecnicaSeleccionPagina').value;
+    const tecnicaSeleccionPagina = document.querySelector('#tecnicaSeleccionPagina').value;
 
     let text = '';
     let nomFichierWiki = '';
@@ -54,12 +54,18 @@ async function apondreBotonsRadio() {
 function mandarDialecte() {
     const nomFichierWiki = document.querySelector('input[name="nomFichierWiki"]').value;
     const dialecte = document.querySelector('input[name="dialecte"]:checked').value;
+    const tecnicaSeleccionPagina = document.querySelector('#tecnicaSeleccionPagina').value;
+
     fetch('/mandar-dialecte', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ nomFichierWiki, dialecte }),
+        body: JSON.stringify({
+            nomFichierWiki: nomFichierWiki,
+            tecnicaSeleccionPagina: tecnicaSeleccionPagina,
+            dialecte: dialecte
+        }),
     })
         .then(responsa => responsa.text())
         .then(resultat => {
