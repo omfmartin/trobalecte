@@ -15,7 +15,7 @@ camins:
       seleccion_paginas: "../donadas/prediccions/xgboost/seleccion_paginas_entropia.txt"
 
 parametres:
-  version_donadas: null # "v0.1.0"
+  version_donadas: "v0.1.1"
   talha_test: 0.2
   longor_min: 50
   longor_max: "inf"
