@@ -307,6 +307,7 @@ tenacity==8.2.3
 terminado==0.17.1
 threadpoolctl==3.5.0
 tinycss2==1.2.1
+tokenize-rt==5.2.0
 tokenizers==0.19.1
 tomli==2.0.1
 tomlkit==0.13.0

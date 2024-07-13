@@ -66,16 +66,9 @@ app.get('/pagina', (req, res) => {
 
 // Seleccion del dialècte e salvar dins un CSV
 app.post('/mandar-dialecte', (req, res) => {
-    debugger;
-
     const { nomFichierWiki, dialecte, tecnicaSeleccionPagina } = req.body;
     const linhaCSV = `${nomFichierWiki},${dialecte}\n`;
     const camin_fichier = `${config.output.dossier_etiquetas}/wikipedia_dialectes_${tecnicaSeleccionPagina}.csv`
-
-    console.log(nomFichierWiki);
-    console.log(dialecte);
-    console.log(tecnicaSeleccionPagina);
-
 
     fs.appendFile(camin_fichier, linhaCSV, (err) => {
         if (err) {

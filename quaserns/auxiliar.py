@@ -1,6 +1,4 @@
 import re
-
-import numpy as np
 import pandas as pd
 
 
@@ -9,10 +7,10 @@ def crear_ensemble_donadas(texte_df: pd.DataFrame, dict_dialectes_df: dict[str, 
     Combinar etiquetas e tèxte
     """
     # Concatenar etiquetas manualas e automaticas
-    dialectes_df = pd.concat(dict_dialectes_df.values(), axis=0)
-    dialectes_df = dialectes_df.drop_duplicates(subset=["Article"])
-    dialectes_df = dialectes_df.query(
-        'Dialecte not in ["void", "exclure", "desconegut", "vivaroalpenc", "lemosin", "aranés"]'
+    dialectes_df = (
+        pd.concat(dict_dialectes_df.values(), axis=0)
+        .drop_duplicates(subset=["Article"])
+        .query('Dialecte not in ["void", "exclure", "desconegut", "vivaroalpenc", "lemosin", "aranés"]')
     )
 
     # Combunar amb lo tèxte
